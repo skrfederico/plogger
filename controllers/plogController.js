@@ -40,8 +40,15 @@ router.get('/plogs/:id', (req, res) => {
     console.log(foundPlog)
     res.render('plogs/Show', {
       //plog: foundPlog
-      title: foundPlog.title,
-      body: foundPlog.body,
+      student: foundPlog.student,
+      teacher: foundPlog.teacher,
+      date: foundPlog.date,
+      category: foundPlog.category,
+      description: foundPlog.description,
+      introduction: foundPlog.introduction,
+      information: foundPlog.information,
+      examNotice: foundPlog.examNotice,
+      misbehaviour: foundPlog.misbehaviour,
       createdAt: foundPlog.createdAt,
       _id: foundPlog._id
     })
@@ -55,8 +62,14 @@ router.get('/plogs/:id/edit', (req, res) => {
   Plog.findById(id, (err, foundPlog) => {
     res.render('plogs/Edit', {
       _id: foundPlog._id,
-      title: foundPlog.title,
-      content: foundPlog.content,
+      student: foundPlog.student,
+      teacher: foundPlog.teacher,
+      date: foundPlog.date,
+      category: foundPlog.category,
+      description: foundPlog.description,
+      introduction: foundPlog.introduction,
+      information: foundPlog.information,
+      examNotice: foundPlog.examNotice,
       body: foundPlog.body
     })
   })
@@ -64,7 +77,7 @@ router.get('/plogs/:id/edit', (req, res) => {
 
 // Create
 router.post('/plogs/', (req, res) => {
-  const { title, body } = req.body
+  const { student, teacher, date, category, description } = req.body
   // console.log(req.body)
   if (req.body.goodDay === 'on') {
     //if checked, req.body.goodDay is set to 'on'
