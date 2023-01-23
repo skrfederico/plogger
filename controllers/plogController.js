@@ -1,10 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
+// Data controller
+const dataController = require('./dataController')
+const viewController = require('./viewController')
+
 /**
- * Models
+ * Models (NOT NEEDED ANYMORE)
  */
-const Plog = require('../models/plogs')
+//const Plog = require('../models/plogs')
 
 //ROUTES
 //redirect
@@ -12,7 +16,24 @@ router.get('/', (req, res) => {
   res.redirect('/plogs')
 })
 
-// Index - route
+// NEW routes ADDED
+// Index
+router.get('/', dataController.index, viewController.index)
+// New
+router.get('/new', viewController.newView)
+// Delete
+router.delete('/:id', dataController.destroy, viewController.redirectHome)
+// Update
+router.put('/:id', dataController.update, viewController.redirectShow)
+// Create
+router.post('/', dataController.create, viewController.redirectHome)
+// Edit
+router.get('/:id/edit', dataController.show, viewController.edit)
+// Show
+router.get('/:id', dataController.show, viewController.show)
+
+/** 
+// Index - route (BEFORE MIDDLEWARE)
 router.get('/plogs', (req, res) => {
   //render a template
   // res.send('Should send back all plogs')
@@ -24,12 +45,12 @@ router.get('/plogs', (req, res) => {
 })
 
 //put this above your Show route
-// New
+// New (BEFORE MIDDLEWARE)
 router.get('/plogs/new', (req, res) => {
   res.render('plogs/New')
 })
 
-// Show - Route
+// Show - Route (BEFORE MIDDLEWARE)
 router.get('/plogs/:id', (req, res) => {
   const { id } = req.params
 
@@ -57,7 +78,7 @@ router.get('/plogs/:id', (req, res) => {
   })
 })
 
-// Edit - route
+// Edit - route (BEFORE MIDDLEWARE)
 router.get('/plogs/:id/edit', (req, res) => {
   const { id } = req.params
 
@@ -80,7 +101,7 @@ router.get('/plogs/:id/edit', (req, res) => {
   })
 })
 
-// Create
+// Create (BEFORE MIDDLEWARE)
 router.post('/plogs/', (req, res) => {
   const {
     success,
@@ -94,46 +115,22 @@ router.post('/plogs/', (req, res) => {
   } = req.body
   // console.log(req.body)
   if (req.body.success === 'on') {
-    //if checked, req.body.success is set to 'on'
     req.body.success = true
   } else {
-    //if not checked, req.body.success is undefined
     req.body.success = false
   }
   if (req.body.etiquette === 'on') {
-    //if checked, req.body.success is set to 'on'
     req.body.etiquette = true
   } else {
-    //if not checked, req.body.success is undefined
     req.body.etiquette = false
   }
 
   Plog.create(req.body, (error, createdPlog) => {
-    //Plog.create({ title, body }, (error, createdPlog) => {
-    // console.log(req.body)
-    // console.log(createdPlog)
-    // //console.error(error)
-    // if (!err) {
-    //   console.log(createdPlog)
-
-    //   res.redirect(`/blog/${createdPlog._id}`)
-    //   return
-    // }
     res.redirect('/plogs/') // sends to /plogs get route
   })
-
-  // Plog.create({ title, body }, (error, createdPlogPost) => {
-  //   // Blog.create({...req.body }, (error, createdBlogPost) => {
-  //   if (error) {
-  //     res.status(400).json({ error })
-  //     return
-  //   }
-
-  //   res.status(200).json(createdPlogPost)
-  // })
 })
 
-// Update - route
+// Update - route (BEFORE MIDDLEWARE)
 router.put('/plogs/:id', (req, res) => {
   console.log(req.body.body)
   // UPDATE
@@ -165,6 +162,22 @@ router.put('/plogs/:id', (req, res) => {
 //   res.send('Should send back one plog')
 // })
 
+
+// DELETE (BEFORE MIDDLEWARE)
+router.delete('/plogs/:id', (req, res) => {
+  console.log(req.params.id)
+  Plog.findByIdAndDelete(req.params.id, (error, deletedPlog) => {
+    // if (!error) {
+    console.log(req.params.id)
+    console.log('Deleted plog post', { deletedPlog })
+    res.redirect('/plogs')
+  })
+  // res.status(400).send('Try again later...')
+})
+// })
+*/
+module.exports = router
+
 /** 
 router.get('/', (req, res) => {
   // this / actually means /plogs/
@@ -172,23 +185,3 @@ router.get('/', (req, res) => {
   // -alternative- res.send(req.path)
 })
 */
-
-// DELETE
-router.delete('/plogs/:id', (req, res) => {
-  // const { id } = req.params
-  //res.send('Should delete one plog')
-  // Plog.findByIdAndDelete(id, (error, deletedPlog) => {
-  console.log(req.params.id)
-  Plog.findByIdAndDelete(req.params.id, (error, deletedPlog) => {
-    // if (!error) {
-    console.log(req.params.id)
-    console.log('Deleted plog post', { deletedPlog })
-    res.redirect('/plogs')
-    // console.log(deletedPlog)
-    // return
-  })
-  // res.status(400).send('Try again later...')
-})
-// })
-
-module.exports = router
