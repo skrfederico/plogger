@@ -5,8 +5,10 @@ const plogSchema = new mongoose.Schema(
   {
     //we need to pass an argument because we need a constructor that takes an object
     //make sure you have an item with a type and required
+    success: { type: Boolean, default: true },
     student: { type: String, required: true },
     teacher: { type: String, required: true },
+    parent: { type: String, required: true },
     date: { type: String, required: true },
     category: {
       type: String,
@@ -16,14 +18,14 @@ const plogSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true
-    }
+    },
+    etiquette: { type: Boolean, default: false }
     // introduction: foundPlog.introduction,
     // information: foundPlog.information,
     // examNotice: foundPlog.examNotice,
     // misbehaviour: foundPlog.misbehaviour,
     // title: { type: String, required: true },
     // body: { type: String, required: true },
-    // goodDay: { type: Boolean, default: true }
   },
   { timestamps: true }
 )

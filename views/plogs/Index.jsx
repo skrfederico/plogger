@@ -15,24 +15,30 @@ class Index extends React.Component {
       <Heading>Phonecalls log index page</Heading>
   
           {this.props.plogs.map((plog, i) => {
-            return (              <div class="border-solid border-2 border-sky-100" key={i}>
-              <div class="border-solid border-2 border-sky-500 grid grid-cols-4 gap-4">
+            return (              <div class="p-4 border-solid border-2 border-sky-100" key={i}>
+              <div class="grid grid-cols-4 gap-4">
 
 <div>
 <h4 id="drawer-label" class="mb-1.5 leading-none text-xl font-semibold text-gray-900 dark:text-white">{plog.student}</h4>
-<dl>
-        <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Called by:</dt>
-        <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{plog.teacher}</dd>
+<div>    <dl>
+        <p class="mb-5 text-xl font-bold text-gray-900 dark:text-white">{" on "}{plog.date}</p>
     </dl>
+<dl><Commented>
+                {plog.success
+                  ? `Successful call`
+                  : `Needs follow up!`}</Commented></dl>
+    </div>
+
+
 </div>
     <dl>
         <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Description</dt>
         <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{plog.description}</dd>
     </dl>
-        <div>    <dl>
-        <p class="mb-5 text-xl font-bold text-gray-900 dark:text-white">{" on "}{plog.date}</p>
-    </dl>
-    </div>
+    <dl>
+        <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Called by:</dt>
+        <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{plog.teacher}</dd>
+    </dl>        
         <div><Button><form action={`/plogs/${plog._id}/edit`} method="GET">
                 <input type="submit" value="UPDATE"/>
                 </form></Button><Button><form

@@ -40,7 +40,10 @@ router.get('/plogs/:id', (req, res) => {
     console.log(foundPlog)
     res.render('plogs/Show', {
       //plog: foundPlog
+      _id: foundPlog._id,
+      success: foundPlog.success,
       student: foundPlog.student,
+      parent: foundPlog.parent,
       teacher: foundPlog.teacher,
       date: foundPlog.date,
       category: foundPlog.category,
@@ -48,9 +51,8 @@ router.get('/plogs/:id', (req, res) => {
       introduction: foundPlog.introduction,
       information: foundPlog.information,
       examNotice: foundPlog.examNotice,
-      misbehaviour: foundPlog.misbehaviour,
-      createdAt: foundPlog.createdAt,
-      _id: foundPlog._id
+      body: foundPlog.body,
+      etiquette: foundPlog.etiquette
     })
   })
 })
@@ -62,7 +64,9 @@ router.get('/plogs/:id/edit', (req, res) => {
   Plog.findById(id, (err, foundPlog) => {
     res.render('plogs/Edit', {
       _id: foundPlog._id,
+      success: foundPlog.success,
       student: foundPlog.student,
+      parent: foundPlog.parent,
       teacher: foundPlog.teacher,
       date: foundPlog.date,
       category: foundPlog.category,
@@ -70,22 +74,40 @@ router.get('/plogs/:id/edit', (req, res) => {
       introduction: foundPlog.introduction,
       information: foundPlog.information,
       examNotice: foundPlog.examNotice,
-      body: foundPlog.body
+      body: foundPlog.body,
+      etiquette: foundPlog.etiquette
     })
   })
 })
 
 // Create
 router.post('/plogs/', (req, res) => {
-  const { student, teacher, date, category, description } = req.body
+  const {
+    success,
+    student,
+    parent,
+    teacher,
+    date,
+    category,
+    description,
+    etiquette
+  } = req.body
   // console.log(req.body)
-  if (req.body.goodDay === 'on') {
-    //if checked, req.body.goodDay is set to 'on'
-    req.body.goodDay = true
+  if (req.body.success === 'on') {
+    //if checked, req.body.success is set to 'on'
+    req.body.success = true
   } else {
-    //if not checked, req.body.goodDay is undefined
-    req.body.goodDay = false
+    //if not checked, req.body.success is undefined
+    req.body.success = false
   }
+  if (req.body.etiquette === 'on') {
+    //if checked, req.body.success is set to 'on'
+    req.body.etiquette = true
+  } else {
+    //if not checked, req.body.success is undefined
+    req.body.etiquette = false
+  }
+
   Plog.create(req.body, (error, createdPlog) => {
     //Plog.create({ title, body }, (error, createdPlog) => {
     // console.log(req.body)
@@ -116,11 +138,19 @@ router.put('/plogs/:id', (req, res) => {
   console.log(req.body.body)
   // UPDATE
   //res.send('Should update one plog by id')
-  if (req.body.goodDay === 'on') {
-    req.body.goodDay = true
+  if (req.body.success === 'on') {
+    req.body.success = true
   } else {
-    req.body.goodDay = false
+    req.body.success = false
   }
+  if (req.body.etiquette === 'on') {
+    //if checked, req.body.success is set to 'on'
+    req.body.etiquette = true
+  } else {
+    //if not checked, req.body.success is undefined
+    req.body.etiquette = false
+  }
+
   Plog.findByIdAndUpdate(req.params.id, req.body, (err, updatedPlog) => {
     if (err) {
       return res.send({ error: err })
