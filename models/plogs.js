@@ -5,6 +5,7 @@ const plogSchema = new mongoose.Schema(
   {
     //we need to pass an argument because we need a constructor that takes an object
     //make sure you have an item with a type and required
+    number: { type: Number, default: 1 },
     success: { type: Boolean, default: true },
     student: { type: String, required: true },
     teacher: { type: String, required: true },

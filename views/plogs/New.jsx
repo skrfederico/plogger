@@ -13,7 +13,7 @@ class New extends React.Component {
         <Heading>New Plog page</Heading>
       </div> 
       <div>
-      <div className="p-8 dark:bg-gray-800">
+      <div className="p-8 dark:bg-gray-800 rounded-lg">
       <form action="/plogs" method="POST">
                 <div className="grid gap-4 mb-4 sm:grid-cols-2">
                   <div>
