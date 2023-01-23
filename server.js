@@ -51,7 +51,9 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 
 // Controllers
 const plogsController = require('./controllers/plogController')
-// const foodLogsController = require('./controllers/foodLogController')
+
+// NEW ADD : DO I NEED THIS?
+// app.use('/plogs', require('./controllers/routeController.js'))
 
 const Plog = require('./models/plogs')
 
