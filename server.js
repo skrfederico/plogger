@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const PORT = process.env.PORT || 8080
 
 //connect to database
-const db = require('./models/db')
+const db = require('./db')
 db.once('open', () => {
   console.log('connected to mongo')
 })
@@ -64,9 +64,9 @@ app.get('/friday', logger2, headersCheck, (req, res) => {
   res.send('Oh yea its friday 🔥😎')
 })
 
-// We are just going to redirect to /fruits if the user goes to our base route
+// We are just going to redirect to /plogs if the user goes to our base route
 app.get('/', (req, res) => {
-  res.redirect('/fruits/')
+  res.redirect('/plogs/')
 })
 
 // NEW ADD : DO I NEED THIS?
@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
 
 const Plog = require('./models/plogs')
 
-app.use('/', plogsController)
+// app.use('/', plogController)
 // app.use('/foodlog', foodLogsController)
 
 // Listen on the port
@@ -121,7 +121,8 @@ app.use(methodOverride('_method'))
 
 // Allow express to use urlencoded
 app.use(express.urlencoded({ extended: true }))
-// Allowing express to recieve json in the body
+// Allowing express to recieve json in the bod
+y
 app.use(express.json())
 
 //View engine

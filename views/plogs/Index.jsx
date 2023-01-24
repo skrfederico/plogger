@@ -14,6 +14,7 @@ class Index extends React.Component {
       <div>
       <Heading>Phonecalls log index page</Heading>
           {this.props.plogs.map((plog, i) => {
+            console.log(plog.success)
               let plogNumber = i + 1; // increment log number by 1
           return (              
             <div class="p-4 border-solid border-2 border-sky-100 dark:bg-gray-800 rounded-lg" key={i}>

@@ -18,7 +18,7 @@ class New extends React.Component {
                 <div className="grid gap-4 mb-4 sm:grid-cols-2">
                   <div>
                 <label for="checked-checkbox" class="inline-block align-middle text-lg font-medium text-gray-900 dark:text-white">Phonecall attained objective</label>
-    <input checked id="checked-checkbox" type="checkbox" value="" class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>      
+    <input checked id="checked-checkbox" type="checkbox" name="success" value="on" class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>      
 <p className="inline-block align-middle text-m font-medium text-gray-900 dark:text-white ">-No follow up required-</p>
     </div>
                     <div>

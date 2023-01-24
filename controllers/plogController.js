@@ -11,10 +11,10 @@ const viewController = require('./viewController')
 //const Plog = require('../models/plogs')
 
 //ROUTES
-//redirect
-router.get('/', (req, res) => {
-  res.redirect('/plogs')
-})
+//redirect ROUTE
+// router.get('/', (req, res) => {
+//   res.redirect('/plogs')
+// })
 
 // NEW routes ADDED
 // Index

@@ -9,7 +9,7 @@ const Plog = require("../../models/plogs");
 
 class Show extends React.Component {
   render() {
-    const  plog  = this.props;
+    const  plog  = this.props.plog;
 
     return (
       <Layout>
@@ -55,16 +55,6 @@ class Show extends React.Component {
                 <input type="submit" value="DELETE" />
                 </form></Button></div>
               </div>
-
-
-
-              
-                
-        
-     
-     
-     
-     
       </Layout>
     );
   }

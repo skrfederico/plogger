@@ -1,21 +1,22 @@
 const RESOURCE_PATH = '/plogs'
+
 const viewController = {
-  index(req, res, next) {
+  index(req, res) {
     res.render('plogs/Index', res.locals.data)
   },
-  show(req, res, next) {
+  show(req, res) {
     res.render('plogs/Show', res.locals.data)
   },
-  edit(req, res, next) {
+  edit(req, res) {
     res.render('plogs/Edit', res.locals.data)
   },
-  newView(req, res, next) {
+  newView(req, res) {
     res.render('plogs/New')
   },
-  redirectHome(req, res, next) {
+  redirectHome(req, res) {
     res.redirect(RESOURCE_PATH)
   },
-  redirectShow(req, res, next) {
+  redirectShow(req, res) {
     res.redirect(RESOURCE_PATH + `/${req.params.id}`)
   }
 }
