@@ -10,8 +10,18 @@ const apiController = require('./apiController')
 //index
 router.get('/api', dataController.index, apiController.index)
 //show
-router.get('/api/:id', dataController.index, apiController.show)
+router.get('/api/:id', dataController.show, apiController.show)
 
+//delete
+router.delete('/api/:id', dataController.destroy, apiController.show)
+
+//update
+router.put('/api/:id', dataController.update, apiController.show)
+
+//create
+router.post('/api/', dataController.create, apiController.show)
+
+//
 // NEW routes
 // Index
 router.get('/', dataController.index, viewController.index)
