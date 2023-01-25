@@ -9,7 +9,7 @@ const dataController = {
           msg: error.message
         })
       } else {
-        res.locals.data.plog = allPlogs
+        res.locals.data.plogs = allPlogs
         next()
       }
     })

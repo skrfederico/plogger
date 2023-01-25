@@ -4,19 +4,15 @@ const router = express.Router()
 // Data controller
 const dataController = require('./dataController')
 const viewController = require('./viewController')
+const apiController = require('./apiController')
 
-/**
- * Models (NOT NEEDED ANYMORE)
- */
-//const Plog = require('../models/plogs')
+//API ROUTES -
+//index
+router.get('/api', dataController.index, apiController.index)
+//show
+router.get('/api/:id', dataController.index, apiController.show)
 
-//ROUTES
-//redirect ROUTE
-// router.get('/', (req, res) => {
-//   res.redirect('/plogs')
-// })
-
-// NEW routes ADDED
+// NEW routes
 // Index
 router.get('/', dataController.index, viewController.index)
 // New
@@ -31,6 +27,8 @@ router.post('/', dataController.create, viewController.redirectHome)
 router.get('/:id/edit', dataController.show, viewController.edit)
 // Show
 router.get('/:id', dataController.show, viewController.show)
+
+module.exports = router
 
 /** 
 // Index - route (BEFORE MIDDLEWARE)
@@ -176,7 +174,8 @@ router.delete('/plogs/:id', (req, res) => {
 })
 // })
 */
-module.exports = router
+
+//
 
 /** 
 router.get('/', (req, res) => {

@@ -1,13 +1,13 @@
 require('dotenv').config()
 
 const express = require('express')
-const methodOverride = require('method-override')
 const app = express() // we are calling express here and assigning it to app
-const mongoose = require('mongoose')
 
 // Configs
-//const PORT = 8080
 const PORT = process.env.PORT || 8080
+
+// Controllers
+const plogController = require('./controllers/plogController')
 
 //connect to database
 const db = require('./db')
@@ -15,24 +15,34 @@ db.once('open', () => {
   console.log('connected to mongo')
 })
 
-/**
- * Initialize the View engine
- */
-app.set('view engine', 'jsx')
-app.engine('jsx', require('jsx-view-engine').createEngine())
+const methodOverride = require('method-override')
+
+// Middleware example
+function logger(req, res, next) {
+  console.info(req.path)
+  next()
+}
+app.use(logger)
+
+// Allow express to use urlencoded
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 // Mount Express Middleware
 app.use((req, res, next) => {
   res.locals.data = {}
   next()
-}) // Creates res.locals.data
+})
+
+// Creates res.locals.data
 app.use(express.urlencoded({ extended: true })) // Creates req.body
 app.use(methodOverride('_method')) // Allows us to override methods
 app.use(express.static('public')) // Allows us to have Static Files
-app.use('/plogs', require('./controllers/routeController.js')) // Mounts our RESTFUL/INDUCES ROUTES at /plogs
+app.use('/plogs', require('./controllers/plogController.js')) // Mounts our RESTFUL/INDUCES ROUTES at /plogs
 
+// NOTE: Why can't I cancel 45 and run 49 ?
 // Controllers - NEW: DO I NEED THIS?
-// app.use("/plogs", plogController);
+// app.use('/plogs', plogController)
 
 // This an example of middleware
 function headersCheck(req, res, next) {
@@ -72,61 +82,24 @@ app.get('/', (req, res) => {
 // NEW ADD : DO I NEED THIS?
 // app.use('/plogs', require('./controllers/routeController.js'))
 
-const Plog = require('./models/plogs')
+// const Plog = require('./models/plogs')
 
-// app.use('/', plogController)
+/**
+ * Initialize the View engine
+ */
+app.set('view engine', 'jsx')
+app.engine('jsx', require('jsx-view-engine').createEngine())
+
+// Controllers
+// app.use('/plogs', plogController)
 // app.use('/foodlog', foodLogsController)
+
+// We are just going to redirect to /plogs if the user goes to our base route
+app.get('/', (req, res) => {
+  res.redirect('/plogs/')
+})
 
 // Listen on the port
 app.listen(PORT, () => {
   console.log(`listening on port:${PORT} http://localhost:${PORT}/`)
 })
-
-/**
-// DB setup
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-
-mongoose.connection.once('open', () => {
-  console.log('connected to mongo')
-})
-
-//Middleware
-
-app.use(express.static('public')) //tells express to try to match requests with files in the directory called 'public'
-
-//...
-//after app has been defined
-//use methodOverride.  We'll be adding a query parameter to our delete form named _method
-app.use(methodOverride('_method'))
-
-// Middleware example
-function logger(req, res, next) {
-  console.info(req.path)
-  next()
-}
-
-app.use(logger)
-
-// Allow express to use urlencoded
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-
-// Controllers
-const plogsController = require('./controllers/plogController')
-//use methodOverride.  We'll be adding a query parameter to our delete form named _method
-app.use(methodOverride('_method'))
-
-// Allow express to use urlencoded
-app.use(express.urlencoded({ extended: true }))
-// Allowing express to recieve json in the bod
-y
-app.use(express.json())
-
-//View engine
-
-app.set('view engine', 'jsx')
-app.engine('jsx', require('jsx-view-engine').createEngine())
-*/

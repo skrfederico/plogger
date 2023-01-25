@@ -1,6 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const Plog = require('../models/plogs.js')
+const apiController = require('./apiController.js')
+const dataController = require('./dataController.js')
+
+//API ROUTES - I NEED TO HAVE THEM IN PLOG CONTROLLER WHEN ERASE THIS CONTROLLER
+//index
+router.get('/api', dataController.index, apiController.index)
+//show
+router.get('/api/:id', dataController.index, apiController.show)
 
 // add routes
 // Index

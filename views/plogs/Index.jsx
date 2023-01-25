@@ -9,6 +9,7 @@ class Index extends React.Component {
   render() {
 
     const { plogs } = this.props;
+    console.log()
     return (
 <Layout>
       <div>
