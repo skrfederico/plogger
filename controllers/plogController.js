@@ -19,6 +19,7 @@ router.delete('/api/:id', dataController.destroy, apiController.show)
 router.put('/api/:id', dataController.update, apiController.show)
 
 //create
+//post request doesn't need id after /api/
 router.post('/api/', dataController.create, apiController.show)
 
 //

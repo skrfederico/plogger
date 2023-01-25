@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8080
 
 // Controllers
 const plogController = require('./controllers/plogController')
+const userController = require('./controllers/user/userController')
 
 //connect to database
 const db = require('./db')
@@ -93,6 +94,7 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 // Controllers
 // app.use('/plogs', plogController)
 // app.use('/foodlog', foodLogsController)
+app.use('/user', userController)
 
 // We are just going to redirect to /plogs if the user goes to our base route
 app.get('/', (req, res) => {
