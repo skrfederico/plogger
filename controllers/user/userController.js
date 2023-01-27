@@ -1,11 +1,20 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
+
 const jwt = require('jsonwebtoken')
 // const saltRounds = 10
 
 // var salt =
 const User = require('../../models/user')
+
+router.get('/signup', (req, res) => {
+  res.render('user/Signup')
+})
+
+router.get('/login', (req, res) => {
+  res.render('user/Login')
+})
 
 router.post('/signup', async (req, res) => {
   const { name, password } = req.body
@@ -60,5 +69,10 @@ router.post('/login', async (req, res) => {
     res.status(500).send(error)
   }
 })
-
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    console.error(err)
+    res.redirect('/')
+  })
+})
 module.exports = router

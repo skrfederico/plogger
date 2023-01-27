@@ -3,6 +3,8 @@ require('dotenv').config()
 const express = require('express')
 const app = express() // we are calling express here and assigning it to app
 
+const methodOverride = require('method-override')
+
 // Configs
 const PORT = process.env.PORT || 8080
 
@@ -16,18 +18,18 @@ db.once('open', () => {
   console.log('connected to mongo')
 })
 
-const methodOverride = require('method-override')
+const basicAuth = require('./middleware/basicAuth')
 
-// Middleware example
-function logger(req, res, next) {
-  console.info(req.path)
-  next()
-}
-app.use(logger)
+app.use(express.static('public')) // Allows us to have Static Files
 
-// Allow express to use urlencoded
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(methodOverride('_method')) // Allows us to override methods
+
+// // Middleware example   not necessary
+// function logger(req, res, next) {
+//   console.info(req.path)
+//   next()
+// }
+// app.use(logger)
 
 // Mount Express Middleware
 app.use((req, res, next) => {
@@ -37,9 +39,12 @@ app.use((req, res, next) => {
 
 // Creates res.locals.data
 app.use(express.urlencoded({ extended: true })) // Creates req.body
-app.use(methodOverride('_method')) // Allows us to override methods
-app.use(express.static('public')) // Allows us to have Static Files
-app.use('/plogs', require('./controllers/plogController.js')) // Mounts our RESTFUL/INDUCES ROUTES at /plogs
+// where does this go?
+// Allow express to use urlencoded
+// app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+// app.use('/plogs', require('./controllers/plogController.js')) // Mounts our RESTFUL/INDUCES ROUTES at /plogs
 
 // NOTE: Why can't I cancel 45 and run 49 ?
 // Controllers - NEW: DO I NEED THIS?
@@ -92,7 +97,7 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('jsx-view-engine').createEngine())
 
 // Controllers
-// app.use('/plogs', plogController)
+app.use('/plogs', basicAuth, plogController)
 // app.use('/foodlog', foodLogsController)
 app.use('/user', userController)
 
