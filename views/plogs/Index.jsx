@@ -65,11 +65,7 @@ class Index extends React.Component {
                 method="POST">
                 <input type="submit" value="DELETE" />
                 </form></Button></div>
-              </div>
-
-
-
-              
+              </div>      
               </div>
             );
           })
