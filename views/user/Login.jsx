@@ -5,10 +5,11 @@ class Login extends React.Component{
     return(
       <div>
         <h1>Login</h1>
+        <a href="/user/signup"> <h3>sign up</h3></a>
         <form action="/user/login" method="POST">
-        Name: <input value="" name="name"/>
-          Password: <input type="hidden" value="" name="password"/>
-<input type="submit" name="" value="Log in"/>
+        Name: <input type="text" value="" name="username" required/>
+          Password: <input type="password" value="" name="password" required/>
+<input type="submit" name="" value="Login"/>
         </form>
       </div>
     )

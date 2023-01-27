@@ -2,18 +2,15 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 
-const jwt = require('jsonwebtoken')
-
 const User = require('../../models/user')
 
-// 1.20 commenting them out
-// router.get('/signup', (req, res) => {
-//   res.render('user/Signup')
-// })
+router.get('/signup', (req, res) => {
+  res.render('user/Signup')
+})
 
-// router.get('/login', (req, res) => {
-//   res.render('user/Login')
-// })
+router.get('/login', (req, res) => {
+  res.render('user/Login')
+})
 
 router.post('/signup', async (req, res) => {
   const { username, password } = req.body
@@ -55,7 +52,7 @@ router.post('/login', async (req, res) => {
     console.log(result)
     if (result) {
       //generate JWT and send back
-      req.session.username = username
+      req.session.username = foundUser.username
       req.session.loggedIn = true
       res.redirect('/plogs')
 
