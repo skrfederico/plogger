@@ -31,6 +31,8 @@ const setupMiddleware = (app) => {
   )
 }
 
+module.exports = setupMiddleware
+
 // NOTE: Why can't I cancel 45 and run 49 ?
 // Controllers - NEW: DO I NEED THIS?
 // app.use('/plogs', plogController)
@@ -54,5 +56,3 @@ const setupMiddleware = (app) => {
 //   console.info('Params: ', req.params)
 //   next()
 // }
-
-module.exports = setupMiddleware

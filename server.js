@@ -19,7 +19,7 @@ db.once('open', () => {
 //Middleware
 const setupMiddleware = require('./middleware/setupMiddleware')
 setupMiddleware(app)
-const basicAuth = require('./middleware/basicAuth')
+// const basicAuth = require('./middleware/basicAuth')
 
 /**
  * Initialize the View engine
@@ -28,7 +28,8 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('jsx-view-engine').createEngine())
 
 // Controllers
-app.use('/plogs', basicAuth, plogController)
+app.use('/plogs', plogController)
+// app.use('/plogs', basicAuth, plogController)
 app.use('/user', userController)
 
 // // Middleware example   not necessary

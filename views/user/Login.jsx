@@ -7,8 +7,9 @@ class Login extends React.Component{
         <h1>Login</h1>
         <a href="/user/signup"> <h3>sign up</h3></a>
         <form action="/user/login" method="POST">
-        Name: <input type="text" value="" name="username" required/>
-          Password: <input type="password" value="" name="password" required/>
+        Name: <input type="text" defaultValue="" name="username" required/>
+          Password: {" "}
+          <input type="password" defaultValue="" name="password" required/>
 <input type="submit" name="" value="Login"/>
         </form>
       </div>

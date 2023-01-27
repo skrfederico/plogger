@@ -13,6 +13,8 @@ class Index extends React.Component {
     return (
 <Layout>
       <div>
+      <a href="/user/logout">
+            <button className="logoutBtn">Logout</button></a>
       <Heading>Phonecalls log index page</Heading>
           {this.props.plogs.map((plog, i) => {
             console.log(plog.success)

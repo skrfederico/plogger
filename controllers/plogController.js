@@ -7,7 +7,7 @@ const viewController = require('./viewController')
 const apiController = require('./apiController')
 
 router.use((req, res, next) => {
-  console.log('session', req.session)
+  // console.log('session', req.session)
 
   if (req.session.loggedIn) {
     next()
