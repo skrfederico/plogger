@@ -12,10 +12,10 @@ class Index extends React.Component {
     console.log()
     return (
 <Layout>
-      <div>
-      <a href="/user/logout">
-            <button className="logoutBtn">Logout</button></a>
+      <div className="grid">
+            {/* <button className="logoutBtn">Logout</button></a></Button> */}
       <Heading>Phonecalls log index page</Heading>
+      <Button> <div className="justify-items-end"><a href="/user/logout" className="logoutBtn">Logout</a></div></Button>
           {this.props.plogs.map((plog, i) => {
             console.log(plog.success)
               let plogNumber = i + 1; // increment log number by 1
