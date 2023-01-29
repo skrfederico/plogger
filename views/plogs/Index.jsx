@@ -9,7 +9,10 @@ class Index extends React.Component {
   render() {
 
     const { plogs } = this.props;
-    console.log()
+
+// Sort vlogs by date in descending order
+plogs.sort((a, b) => new Date(a.date) - new Date(b.date));
+
     return (
 <Layout>
       <div className="grid">
