@@ -47,13 +47,20 @@ class Show extends React.Component {
         <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{plog.category}</dd>
     </dl>
     </div>
+    <div className="grid">
         <div><Button><form action={`/plogs/${plog._id}/edit`} method="GET">
                 <input type="submit" value="UPDATE"/>
-                </form></Button><Button><form
-                action={`/plogs/${plog._id}?_method=DELETE`}
+                </form>
+                </Button>
+                </div>
+                <div>
+                <Button>
+                  <form action={`/plogs/${plog._id}?_method=DELETE`}
                 method="POST">
                 <input type="submit" value="DELETE" />
-                </form></Button></div>
+                </form></Button>
+                </div>
+                </div>
               </div>
       </Layout>
     );

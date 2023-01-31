@@ -19,12 +19,12 @@ class Header extends React.Component {
       // </nav>
       
 
-<nav className="border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-700">
+<nav className=" bg-blue-700 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-700">
   <div className="container flex flex-wrap items-center justify-between mx-auto">
     <a href="https://websailors.pro/" className="flex items-center">
         <img src="https://www.shareicon.net/download/2016/02/04/713833_telephone.svg" className="h-6 mr-3 sm:h-9" alt="PhoneLog Logo" />
         
-        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-blue">Phonecalls log</span>
+        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Phonecalls log</span>
     </a>
     <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
       <span className="sr-only">Open main menu</span>
@@ -36,7 +36,7 @@ class Header extends React.Component {
           <a href="/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Main</a>
         </li>
         <li>
-          <a href="/plogs/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Phonelogs</a>
+          <a href="/plogs/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Plogs</a>
         </li>
         <li>
           <a href="/plogs/new" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">New</a>

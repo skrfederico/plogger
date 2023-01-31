@@ -11,7 +11,7 @@ class Layout extends React.Component {
           <script src="https://cdn.tailwindcss.com"></script>
         <Header/>
         </head>
-        <body className="w-screen h-screen bg-gray-200 flex flex-col align-center w-full">
+        <body className="w-screen h-screen bg-gray-300 flex flex-col align-center w-full">
           <main className="p-24">{children}</main>
         </body>
       </html>
