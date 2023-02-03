@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 8080
 // Controllers
 const plogController = require('./controllers/plogController')
 const userController = require('./controllers/user/userController')
+const Plog = require('./models/plogs')
 
 //connect to database
 const db = require('./db')
@@ -29,8 +30,24 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 
 // Controllers
 app.use('/plogs', plogController)
-// app.use('/plogs', basicAuth, plogController)
 app.use('/user', userController)
+
+app.get('/search', (req, res) => {
+  const { query } = req.query
+  Plog.find({}, (err, docs) => {
+    const results = []
+    if (err) {
+      console.error(err)
+    } else {
+      for (let i = 0; i < docs.length; i++) {
+        if (docs[i].description.toLowerCase().includes(query.toLowerCase())) {
+          results.push(docs[i])
+        }
+      }
+    }
+    res.render('plogs/Searchindex', { plogs: results })
+  })
+})
 
 // // Middleware example   not necessary
 // function logger(req, res, next) {

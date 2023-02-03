@@ -6,19 +6,17 @@ const plogSchema = new mongoose.Schema(
     //we need to pass an argument because we need a constructor that takes an object
     //make sure you have an item with a type and required
     number: { type: Number, default: 1 },
-    success: { type: Boolean, default: true },
-    student: { type: String, required: true },
-    teacher: { type: String, required: true },
-    parent: { type: String, required: true },
-    date: { type: String, required: true },
+    success: { type: Boolean },
+    student: { type: String },
+    teacher: { type: String },
+    parent: { type: String },
+    date: { type: String },
     category: {
       type: String,
-      enum: ['introduction', 'information', 'examNotice', 'misbehaviour'],
-      required: true
+      enum: ['introduction', 'information', 'examNotice', 'misbehaviour']
     },
     description: {
-      type: String,
-      required: true
+      type: String
     },
     etiquette: { type: Boolean, default: false }
     // introduction: foundPlog.introduction,

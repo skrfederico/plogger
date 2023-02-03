@@ -4,6 +4,9 @@ const viewController = {
   index(req, res) {
     res.render('plogs/Index', res.locals.data)
   },
+  indexforsearch(req, res) {
+    res.render('vlogs/searchIndex', res.locals.data)
+  },
   show(req, res) {
     res.render('plogs/Show', res.locals.data)
   },

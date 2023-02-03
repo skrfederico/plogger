@@ -8,7 +8,6 @@ const apiController = require('./apiController')
 
 router.use((req, res, next) => {
   // console.log('session', req.session)
-
   if (req.session.loggedIn) {
     next()
   } else {
@@ -17,18 +16,19 @@ router.use((req, res, next) => {
 })
 
 //API ROUTES -
-//index
+//index (dataController.index)
 router.get('/api', dataController.index, apiController.index)
-//show
+
+//show (dataController.show)
 router.get('/api/:id', dataController.show, apiController.show)
 
-//delete
+//delete (dataController.destroy)
 router.delete('/api/:id', dataController.destroy, apiController.show)
 
-//update
+//update (dataController.update)
 router.put('/api/:id', dataController.update, apiController.show)
 
-//create
+//create (dataController.create)
 //post request doesn't need id after /api/
 router.post('/api/', dataController.create, apiController.show)
 
@@ -36,6 +36,8 @@ router.post('/api/', dataController.create, apiController.show)
 // NEW routes
 // Index
 router.get('/', dataController.index, viewController.index)
+// Search Index
+router.get('/search', dataController.index, viewController.indexforsearch)
 // New
 router.get('/new', viewController.newView)
 // Delete
