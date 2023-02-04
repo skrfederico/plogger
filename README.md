@@ -8,7 +8,7 @@ Communication between parents and teachers is a key part for the educational suc
 
 ## The end goal
 
-To make the access, manipulation and follow up of phone conversation registers easier for both educators and parents of students.
+To make the access, manipulation and follow-up of phone conversation registers easier for both educators and parents of students.
 
 ## Background info 
 
@@ -26,11 +26,11 @@ The creation of this app was inspired by the fruits app modeled for students of 
 
 - Nav bar
 
-  - A header navigation bar with links to General Assembly (main) webpage, Hedwig's SEIR Flex cohort heroku webpage, a "New" option to create a new 'plog' and a search bar to help the user find specific 'plogs' using keywords.
+  - A header navigation bar with links to Phonecalls log (main) webpage -dummylink-, a "New" option to create a new 'plog' and a search bar to help the user find specific 'plogs' using keywords.
 
 - Sessions
 
-  - Different users will have access to different features. The school staff has full CRUD, but the parents will only be able to read.
+  - Different users will have access to different features. The school staff has full CRUD options, but the parents will only be able to read.
 
 ## Screenshots
 
@@ -67,10 +67,9 @@ Plog (show)
 
 ## Next Steps (Ice Box Features)
 
-- Commenting on existing logs
+- Commenting on existing plogs
 - Photograph integration (when evidence is required)
 - Users with restricted features (parents)
-- Admin ability to close cases (head of the school)
 
 ## Wire Frame and ERD
 
