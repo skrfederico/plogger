@@ -59,11 +59,16 @@ Plog (show)
 - jsx-view-engine
 - Morgan
 - react
+- Trello
+
 
 ## Getting started 
 
 - https://plogger.herokuapp.com/
 - sign up if you are a new user or use your existing name and password.
+
+- BONUS APP
+- https://video-logger.herokuapp.com/
 
 ## Next Steps (Ice Box Features)
 
@@ -78,3 +83,15 @@ wireframe
 
 <a href="https://imgur.com/LLnwMlk"><img src="https://i.imgur.com/LLnwMlk.png" title="source: imgur.com" /></a>
 ERD
+
+
+## Restful routes table
+| URL | HTTP VERB| Mongoose model function 
+|:--------:| -------------:| -------------:|
+| /plogs/ | GET |.find
+| /plogs/new | GET |N/A
+| /plogs | POST |.create
+| /plogs/:id | GET |.findById
+| /plogs/:id/edit | GET |.findById
+| /plogs/:id | PUT |.findByIdAndUpdate
+| /plogs/:id | DELETE |.findByIdAndDelete
