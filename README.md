@@ -66,7 +66,7 @@ Plog (show)
 
 - https://plogger.herokuapp.com/ (not deployed)
 - sign up if you are a new user or use your existing name and password.
-- ---
+- -
 - BONUS APP (deployed)
 - https://video-logger.herokuapp.com/
 
