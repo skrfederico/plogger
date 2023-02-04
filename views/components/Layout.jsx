@@ -12,7 +12,7 @@ class Layout extends React.Component {
         <Header/>
         </head>
         <body className="w-screen h-screen bg-gray-300 flex flex-col align-center w-full">
-          <main className="p-24">{children}</main>
+          <main className="p-12">{children}</main>
         </body>
       </html>
     );
