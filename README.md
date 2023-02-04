@@ -64,10 +64,10 @@ Plog (show)
 
 ## Getting started 
 
-- https://plogger.herokuapp.com/
+- https://plogger.herokuapp.com/ (not deployed)
 - sign up if you are a new user or use your existing name and password.
-
-- BONUS APP
+- ---
+- BONUS APP (deployed)
 - https://video-logger.herokuapp.com/
 
 ## Next Steps (Ice Box Features)
