@@ -26,9 +26,13 @@ The creation of this app was inspired by the fruits app modeled for students of 
 
 - Nav bar
 
-  - A header navigation bar with links to General Assembly webpage, Hedwig's cohort heroku webpage, a "new vlog" option to create a new entry and a search bar to help the user find specific 'plogs' using keywords.
+  - A header navigation bar with links to General Assembly (main) webpage, Hedwig's SEIR Flex cohort heroku webpage, a "New" option to create a new 'plog' and a search bar to help the user find specific 'plogs' using keywords.
 
-## Screen shots
+- Sessions
+
+  - Different users will have access to different features. The school staff has full CRUD, but the parents will only be able to read.
+
+## Screenshots
 
 
 <a href="https://imgur.com/meFzX1Z"><img src="https://i.imgur.com/meFzX1Z.png" title="source: imgur.com" /></a>
