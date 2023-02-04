@@ -70,11 +70,8 @@ Plog (show)
 
 ## Wire Frame and ERD
 
-
-<a href="https://imgur.com/LLnwMlk"><img src="https://i.imgur.com/LLnwMlk.png" title="source: imgur.com" /></a>
-
-ERD
-
-
 <a href="https://imgur.com/uHBO8LZ"><img src="https://i.imgur.com/uHBO8LZ.png" title="source: imgur.com" /></a>
 wireframe
+
+<a href="https://imgur.com/LLnwMlk"><img src="https://i.imgur.com/LLnwMlk.png" title="source: imgur.com" /></a>
+ERD
